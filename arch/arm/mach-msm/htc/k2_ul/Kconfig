@@ -1,0 +1,10 @@
+config BOARD_HEADER_FILE
+	string "HTC board specific header file name"
+	default ""
+
+config MACH_K2_UL
+	depends on ARCH_MSM8930
+	select MACH_HTC
+	bool "HTC One SV"
+	help
+	  Support for the HTC One SV device.

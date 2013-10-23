@@ -1,0 +1,30 @@
+#
+# Include the specific Kconfig file for HTC board
+#
+
+# ELITE
+source "arch/arm/mach-msm/htc/elite/Kconfig"
+
+# FIGHTER
+source "arch/arm/mach-msm/htc/fighter/Kconfig"
+
+# JET
+source "arch/arm/mach-msm/htc/jet/Kconfig"
+
+# VILLE
+source "arch/arm/mach-msm/htc/ville/Kconfig"
+
+# TC2
+source "arch/arm/mach-msm/htc/tc2/Kconfig"
+
+# K2_UL
+source "arch/arm/mach-msm/htc/k2_ul/Kconfig"
+
+# OPERAUL
+source "arch/arm/mach-msm/htc/operaul/Kconfig"
+
+# M4_UL
+source "arch/arm/mach-msm/htc/m4ul/Kconfig"
+
+config MACH_HTC_DUMMY
+	bool "NONE (No device)"

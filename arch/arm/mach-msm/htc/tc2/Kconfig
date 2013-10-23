@@ -1,0 +1,10 @@
+config BOARD_HEADER_FILE
+	string "HTC board specific header file name"
+	default ""
+
+config MACH_TC2
+	depends on ARCH_MSM8930
+	select MACH_HTC
+	bool "HTC One VX"
+	help
+	  Support for the HTC One VX device.
