@@ -823,7 +823,7 @@ static struct htc_battery_platform_data htc_battery_pdev_data = {
 						cable_detect_register_notifier,
 	.icharger.dump_all = pm8921_dump_all,
 	.icharger.get_attr_text = pm8921_charger_get_attr_text,
-	.icharger.is_safty_timer_timeout = pm8921_is_chg_safety_timer_timeout,
+	.icharger.is_safety_timer_timeout = pm8921_is_chg_safety_timer_timeout,
 	
 	.igauge.name = "pm8921",
 	.igauge.get_battery_voltage = pm8921_get_batt_voltage,
@@ -2792,7 +2792,7 @@ static struct platform_device msm_device_saw_core0 = {
 	.name	= "saw-regulator",
 	.id	= 0,
 	.dev	= {
-		 .platform_data = &msm_saw_regulator_pdata_s5,,
+		 .platform_data = &msm_saw_regulator_pdata_s5,
 	},
 };
 
@@ -2951,7 +2951,7 @@ static struct platform_device *common_devices[] __initdata = {
 	&msm_device_uart_dm6,
 	&k2_ul_rfkill,
 #endif
-HTC_AUD++ TEMP REMOVE 
+#HTC_AUD++ TEMP REMOVE 
  //  &apq_cpudai_pri_i2s_rx,  
  //  &apq_cpudai_pri_i2s_tx, 
  //  &msm_cpudai_mi2s,
@@ -3323,11 +3323,8 @@ static void __init register_i2c_devices(void)
 	};
 #endif
 
-	
-	if (machine_is_msm8930_cdp() || machine_is_msm8627_cdp() || machine_is_k2_ul())
 		mach_mask = I2C_SURF;
 
-	
 	for (i = 0; i < ARRAY_SIZE(msm8960_i2c_devices); ++i) {
 		if (msm8960_i2c_devices[i].machs & mach_mask)
 			i2c_register_board_info(msm8960_i2c_devices[i].bus,
@@ -3348,12 +3345,15 @@ static void __init k2_ul_init(void)
 {
 	if (meminfo_init(SYS_MEMORY, SZ_256M) < 0)
 		pr_err("meminfo_init() failed!\n");
+		
+	   htc_add_ramconsole_devices();
+       platform_device_register(&msm_gpio_device);
 
 	msm_tsens_early_init(&msm_tsens_pdata);
 	msm_thermal_init(&msm_thermal_pdata);
 	BUG_ON(msm_rpm_init(&msm8930_rpm_data));
 	BUG_ON(msm_rpmrs_levels_init(&msm_rpmrs_data));
-	msm_rpmrs_lpm_init(1, 1, 1, 1);
+	// msm_rpmrs_lpm_init(1, 1, 1, 1);
 
 	regulator_suppress_info_printing();
 	if (msm_xo_init())
@@ -3427,7 +3427,6 @@ static void __init k2_ul_init(void)
 #endif
 	msm8930_init_mmc();
 	
-	
 	if (k2_ul_init_mmc() != 0)
 		printk(KERN_ERR "%s: Unable to initialize MMC (SDCC4)\n", __func__);
 	
@@ -3440,9 +3439,7 @@ static void __init k2_ul_init(void)
 
 	slim_register_board_info(msm_slim_devices,
 		ARRAY_SIZE(msm_slim_devices));
-	change_memory_power = &msm8930_change_memory_power;
 	BUG_ON(msm_pm_boot_init(&msm_pm_boot_pdata));
-	msm_pm_init_sleep_status_data(&msm_pm_slp_sts_data);
 
 	create_proc_read_entry("emmc", 0, NULL, emmc_partition_read_proc, NULL);
 
