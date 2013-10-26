@@ -13,19 +13,14 @@
 
 #include <linux/init.h>
 #include <linux/platform_device.h>
-#include <linux/msm_kgsl.h>
+#include <mach/kgsl.h>
 #include <mach/msm_bus_board.h>
 #include <mach/board.h>
-#include <mach/msm_iomap.h>
-#include "../devices.h"
-#include "../board-8930.h"
-#ifdef CONFIG_MACH_K2_WL
-#include "../board-k2_wl.h"
-#elif defined CONFIG_MACH_DUMMY
-#include "../board-k2_cl.h"
-#elif defined CONFIG_MACH_DUMMY
-#include "../board-k2_plc_cl.h"
-#endif
+#include <mach/socinfo.h>
+
+#include "devices.h"
+#include "board-8930.h"
+
 #ifdef CONFIG_MSM_BUS_SCALING
 static struct msm_bus_vectors grp3d_init_vectors[] = {
 	{
@@ -152,7 +147,6 @@ static struct kgsl_device_platform_data kgsl_3d0_pdata = {
 #endif
 	.iommu_data = kgsl_3d0_iommu_data,
 	.iommu_count = ARRAY_SIZE(kgsl_3d0_iommu_data),
-	.snapshot_address = MSM_GPU_SNAP_SHOT_3D0_PHYS,
 };
 
 static struct platform_device device_kgsl_3d0 = {

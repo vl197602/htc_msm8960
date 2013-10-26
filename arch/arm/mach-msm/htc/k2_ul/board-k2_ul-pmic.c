@@ -13,7 +13,6 @@
 
 #include <linux/interrupt.h>
 #include <linux/mfd/pm8xxx/pm8038.h>
-#include <linux/mfd/pm8xxx/pm8921.h>
 #include <linux/mfd/pm8xxx/pm8xxx-adc.h>
 #include <linux/msm_ssbi.h>
 #include <asm/mach-types.h>
@@ -94,7 +93,8 @@ static struct pm8xxx_gpio_init pm8038_gpios[] __initdata = {
 };
 
 static struct pm8xxx_mpp_init pm8038_mpps[] __initdata = {
-	
+	/* External 5V regulator enable; shared by HDMI and USB_OTG switches. */
+	PM8XXX_MPP_INIT(3, D_INPUT, PM8038_MPP_DIG_LEVEL_VPH, DIN_TO_INT),
 };
 
 void __init msm8930_pm8038_gpio_mpp_init(void)
@@ -336,7 +336,7 @@ static struct pm8921_charger_platform_data pm8921_chg_pdata __devinitdata = {
 	.hot_thr = PM_SMBC_BATT_TEMP_HOT_THR__LOW,
 	.led_src_config		= LED_SRC_VPH_PWR,
 };
-#if 0 // Disable leds for now
+
 #define PM8038_WLED_MAX_CURRENT		20
 #define PM8XXX_LED_PWM_PERIOD		1000
 #define PM8XXX_LED_PWM_DUTY_MS		64
@@ -426,9 +426,9 @@ static struct pm8xxx_led_platform_data pm8xxx_leds_pdata = {
 	.configs = pm8038_led_configs,
 	.num_configs = ARRAY_SIZE(pm8038_led_configs),
 };
-#endif
+
 static struct pm8xxx_ccadc_platform_data pm8xxx_ccadc_pdata = {
-	.r_sense_uohm    = 10000,
+	.r_sense_uohm		= 10,
 	.calib_delay_ms		= 600000,
 };
 
@@ -461,7 +461,7 @@ static struct pm8038_platform_data pm8038_platform_data __devinitdata = {
 	.charger_pdata		= &pm8921_chg_pdata,
 	.bms_pdata		= &pm8921_bms_pdata,
 	.adc_pdata		= &pm8xxx_adc_pdata,
-	// .leds_pdata		= &pm8xxx_leds_pdata,
+	.leds_pdata		= &pm8xxx_leds_pdata,
 	.vibrator_pdata         = &pm8xxx_vib_pdata,
 	.ccadc_pdata		= &pm8xxx_ccadc_pdata,
 };

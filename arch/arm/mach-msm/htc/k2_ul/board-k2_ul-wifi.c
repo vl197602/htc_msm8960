@@ -88,7 +88,7 @@ static struct resource k2_ul_wifi_resources[] = {
 #endif
 	},
 };
-#if 0
+
 #ifdef CONFIG_MSM_BUS_SCALING
 static struct msm_bus_vectors wlan_init_vectors[] = {
 	{
@@ -125,14 +125,14 @@ static struct msm_bus_scale_pdata wlan_bus_scale_pdata = {
 	.name = "wlan",
 };
 #endif
-#endif
+
 static struct wifi_platform_data k2_ul_wifi_control = {
 	.set_power      = k2_ul_wifi_power,
 	.set_reset      = k2_ul_wifi_reset,
 	.set_carddetect = k2_ul_wifi_set_carddetect,
 	.mem_prealloc   = k2_ul_wifi_mem_prealloc,
 	.get_mac_addr	= k2_ul_wifi_get_mac_addr,
-	// .bus_scale_table    = &wlan_bus_scale_pdata,
+	 //	.bus_scale_table    = &wlan_bus_scale_pdata,
 };
 
 static struct platform_device k2_ul_wifi_device = {

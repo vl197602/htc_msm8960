@@ -6,7 +6,7 @@ obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-mmc.o
 obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-rfkill.o
 obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-wifi.o
 obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-gpu.o
-obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-audio.o
+# obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-audio.o
 obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-pmic.o
 obj-$(CONFIG_MACH_K2_UL) += board-k2_ul-keypad.o
 ifeq ($(CONFIG_MSM_CAMERA),y)

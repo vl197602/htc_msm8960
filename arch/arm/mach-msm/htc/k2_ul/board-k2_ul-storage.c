@@ -19,7 +19,7 @@
 #include <asm/mach/mmc.h>
 #include <mach/msm_bus_board.h>
 #include <mach/board.h>
-#include <linux/gpio.h>
+#include <mach/gpio.h>
 #include <mach/gpiomux.h>
 #include <mach/socinfo.h>
 #include "devices.h"
@@ -269,7 +269,7 @@ void __init msm8930_init_mmc(void)
 	
 	if (!machine_is_msm8930_cdp()) {
 		msm8930_sdc3_data.wpswitch_gpio = 0;
-		// msm8930_sdc3_data.wpswitch_polarity = 0;
+                //		msm8930_sdc3_data.wpswitch_polarity = 0;
 	}
 	msm_add_sdcc(3, &msm8930_sdc3_data);
 #endif

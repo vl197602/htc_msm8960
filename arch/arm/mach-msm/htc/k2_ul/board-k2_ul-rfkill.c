@@ -140,7 +140,7 @@ static void k2_ul_config_bt_on(void)
 {
 	printk(KERN_INFO "[BT]== R ON ==\n");
 
-	// htc_wifi_bt_sleep_clk_ctl(CLK_ON, ID_BT);
+        //	htc_wifi_bt_sleep_clk_ctl(CLK_ON, ID_BT);
 	mdelay(2);
 
 	
@@ -172,7 +172,7 @@ static void k2_ul_config_bt_off(void)
 
 	gpio_set_value(MSM_BT_DEV_WAKE, 1);
 
-	// htc_wifi_bt_sleep_clk_ctl(CLK_OFF, ID_BT);
+        //	htc_wifi_bt_sleep_clk_ctl(CLK_OFF, ID_BT);
 	mdelay(2);
 
 	printk(KERN_INFO "[BT]== R OFF ==\n");

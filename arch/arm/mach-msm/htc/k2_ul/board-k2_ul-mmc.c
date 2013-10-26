@@ -23,7 +23,7 @@
 #include <linux/irq.h>
 #include <asm/gpio.h>
 #include <asm/io.h>
-#include <linux/export.h>
+
 #include <mach/vreg.h>
 #include <mach/htc_pwrsink.h>
 
@@ -36,8 +36,6 @@
 #include "devices.h"
 #include "board-k2_ul.h"
 #include <mach/proc_comm.h>
-#include <linux/export.h>
-
 #include "board-k2_ul-mmc.h"
 
 #include <mach/rpm.h>
@@ -162,7 +160,7 @@ int k2_ul_wifi_power(int on)
 				  ARRAY_SIZE(wifi_off_gpio_table));
 	}
 
-	// htc_wifi_bt_sleep_clk_ctl(on, ID_WIFI);
+	 //	htc_wifi_bt_sleep_clk_ctl(on, ID_WIFI);
 	mdelay(1);
 	gpio_set_value(MSM_WL_REG_ON, on); 
 	mdelay(1);

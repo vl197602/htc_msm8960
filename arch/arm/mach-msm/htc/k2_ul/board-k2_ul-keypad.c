@@ -20,9 +20,9 @@
 #include <linux/keyreset.h>
 #include <asm/mach-types.h>
 #include <linux/gpio.h>
-#include <linux/delay.h>
 #include <mach/gpio.h>
-
+#include <linux/delay.h>
+#include <linux/moduleparam.h>
 #include "board-k2_ul.h"
 
 #undef MODULE_PARAM_PREFIX
@@ -98,8 +98,6 @@ static struct gpio_event_input_info k2_ul_keypad_input_info = {
 # endif
 	.keymap                = k2_ul_keypad_input_map,
 	.keymap_size           = ARRAY_SIZE(k2_ul_keypad_input_map),
-	.setup_input_gpio      = k2_ul_setup_input_gpio,
-	.clear_hw_reset        = k2_ul_clear_hw_reset,
 };
 
 static struct gpio_event_info *k2_ul_keypad_info[] = {

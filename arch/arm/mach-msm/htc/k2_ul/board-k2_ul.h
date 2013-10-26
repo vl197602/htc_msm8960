@@ -1,7 +1,7 @@
-#include <linux/regulator/msm-gpio-regulator.h> 
- #include <mach/rpm-regulator.h> 
-#include <linux/mfd/pm8xxx/pm8921.h> 
- #include <linux/i2c.h>
+#include <linux/regulator/msm-gpio-regulator.h>
+#include <mach/rpm-regulator.h>
+#include <linux/mfd/pm8xxx/pm8921.h>
+#include <linux/i2c.h>
 #include <mach/msm_memtypes.h>
 
 #define	GPIO(X)		(X)
@@ -174,15 +174,21 @@
 #define PM_NC_GPIO_12				PMGPIO(12)
 
 #endif 
-extern struct regulator_init_data msm_saw_regulator_pdata_s5; 
-extern struct regulator_init_data msm_saw_regulator_pdata_s6; 
-extern struct rpm_regulator_platform_data tc2_rpm_regulator_pdata __devinitdata; extern struct platform_device msm8930_device_ext_5v_vreg __devinitdata; 
-extern struct platform_device msm8930_device_ext_l2_vreg __devinitdata; 
-extern struct platform_device msm8930_device_ext_3p3v_vreg __devinitdata; 
-extern struct platform_device msm8930_device_ext_otg_sw_vreg __devinitdata; 
-extern struct pm8xxx_regulator_platform_data 
-  msm_pm8921_regulator_pdata[] __devinitdata; 
+
+extern struct regulator_init_data msm_saw_regulator_pdata_s5;
+extern struct regulator_init_data msm_saw_regulator_pdata_s6;
+
+extern struct rpm_regulator_platform_data k2_ul_rpm_regulator_pdata __devinitdata;
+
+extern struct platform_device msm8930_device_ext_5v_vreg __devinitdata;
+extern struct platform_device msm8930_device_ext_l2_vreg __devinitdata;
+extern struct platform_device msm8930_device_ext_3p3v_vreg __devinitdata;
+extern struct platform_device msm8930_device_ext_otg_sw_vreg __devinitdata;
+extern struct pm8xxx_regulator_platform_data
+	msm_pm8921_regulator_pdata[] __devinitdata;
+
 extern int msm_pm8921_regulator_pdata_len __devinitdata;
+
 extern int panel_type;
 extern struct msm_camera_board_info k2_camera_board_info;
 extern struct platform_device k2_msm_rawchip_device;
